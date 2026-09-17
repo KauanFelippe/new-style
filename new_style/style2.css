@@ -150,33 +150,272 @@ section h2 {
 
     color: #c77dff;
 }
-
-
 /* CARROSSEL */
 
 .carrossel-area {
-    display: flex;
-    gap: 25px;
 
-    overflow-x: auto;
+    width: 100%;
+    max-width: 900px;
 
-    padding: 15px;
-}
-
-.slide {
-    min-width: 380px;
     height: 300px;
 
-    border-radius: 15px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 25px;
+
+    position: relative;
+
+    overflow: hidden;
+}
+
+
+/* CADA IMAGEM */
+
+.slide {
+
+    width: 260px;
+    height: 260px;
+
+    flex-shrink: 0;
+
+    border-radius: 10px;
 
     overflow: hidden;
 
-    border: 2px solid #6a1b9a;
+    border: 1px solid #4a176b;
 
-    background: #151515;
+    background: #111111;
 
-    flex-shrink: 0;
+    position: absolute;
+
+    transition:
+        left 0.8s ease,
+        opacity 0.8s ease,
+        transform 0.8s ease;
+
 }
+
+
+/* IMAGEM */
+
+.slide img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    transition: transform 0.4s ease;
+
+}
+
+
+/* IMAGEM DA ESQUERDA */
+
+.slide.esquerda {
+
+    left: calc(50% - 410px);
+
+    opacity: 1;
+
+    transform: scale(0.95);
+
+    z-index: 2;
+
+}
+
+
+/* IMAGEM DO MEIO */
+
+.slide.meio {
+
+    left: calc(50% - 130px);
+
+    opacity: 1;
+
+    transform: scale(1);
+
+    z-index: 3;
+
+    border-color: #6a1b9a;
+
+}
+
+
+/* IMAGEM DA DIREITA */
+
+.slide.direita {
+
+    left: calc(50% + 150px);
+
+    opacity: 1;
+
+    transform: scale(0.95);
+
+    z-index: 2;
+
+}
+
+
+/* IMAGENS QUE NÃO ESTÃO APARECENDO */
+
+.slide.oculta {
+
+    left: 100%;
+
+    opacity: 0;
+
+    transform: scale(0.9);
+
+    z-index: 1;
+
+}
+
+
+/* EFEITO AO PASSAR O MOUSE */
+
+.slide:hover img {
+
+    transform: scale(1.04);
+
+}
+
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 850px) {
+
+    .carrossel-area {
+
+        max-width: 100%;
+
+        gap: 15px;
+
+    }
+
+    .slide {
+
+        width: 220px;
+        height: 260px;
+
+    }
+
+    .slide.esquerda {
+
+        left: calc(50% - 340px);
+
+    }
+
+    .slide.meio {
+
+        left: calc(50% - 110px);
+
+    }
+
+    .slide.direita {
+
+        left: calc(50% + 120px);
+
+    }
+
+}
+
+
+/* CELULAR */
+
+@media (max-width: 650px) {
+
+    .carrossel-area {
+
+        height: 270px;
+
+    }
+
+    .slide {
+
+        width: 180px;
+        height: 240px;
+
+    }
+
+    .slide.esquerda {
+
+        left: calc(50% - 285px);
+
+    }
+
+    .slide.meio {
+
+        left: calc(50% - 90px);
+
+    }
+
+    .slide.direita {
+
+        left: calc(50% + 105px);
+
+    }
+
+}
+
+
+/* SLIDES */
+
+.slide {
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+
+    animation: trocarImagem 28s infinite;
+
+    overflow: hidden;
+}
+
+
+/* Cada imagem começa em um momento diferente */
+
+.slide:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.slide:nth-child(2) {
+    animation-delay: 4s;
+}
+
+.slide:nth-child(3) {
+    animation-delay: 8s;
+}
+
+.slide:nth-child(4) {
+    animation-delay: 12s;
+}
+
+.slide:nth-child(5) {
+    animation-delay: 16s;
+}
+
+.slide:nth-child(6) {
+    animation-delay: 20s;
+}
+
+.slide:nth-child(7) {
+    animation-delay: 24s;
+}
+
+
+/* IMAGENS */
 
 .slide img {
     width: 100%;
@@ -184,13 +423,57 @@ section h2 {
 
     object-fit: cover;
 
-    transition: 0.4s ease;
+    display: block;
+
+    transition: transform 0.5s ease;
 }
 
-.slide:hover img {
+
+/* Efeito ao passar o mouse */
+
+.carrossel-area:hover .slide img {
     transform: scale(1.05);
 }
 
+
+/* ANIMAÇÃO */
+
+@keyframes trocarImagem {
+
+    0% {
+        opacity: 0;
+    }
+
+    3% {
+        opacity: 1;
+    }
+
+    14% {
+        opacity: 1;
+    }
+
+    17% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 0;
+    }
+
+}
+
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 700px) {
+
+    .carrossel-area {
+        width: 100%;
+        max-width: 380px;
+        height: 300px;
+    }
+
+}
 
 /* PRODUTOS */
 
