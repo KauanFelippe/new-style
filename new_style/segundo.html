@@ -47,71 +47,106 @@
 
     </section>
 
+<!-- CARROSSEL -->
+<section class="carrossel">
 
-    <!-- CARROSSEL -->
-    <section class="carrossel">
+    <h2>Destaques</h2>
 
-        <h2>Destaques</h2>
+    <div class="carrossel-area">
 
-        <div class="carrossel-area">
-
-            <!-- Espaço para as imagens -->
-            <div class="slide">
-                <img src="img 1.jpg" alt="Produto em destaque">
-            </div>
-
-            <div class="slide">
-                <img src="img 2.jpg" alt="Produto em destaque">
-            </div>
-
-            <div class="slide">
-                <img src="img 3.jpg" alt="Produto em destaque">
-            </div>
-
+        <div class="slide">
+            <img src="img 1.jpg" alt="Produto em destaque">
         </div>
 
-    </section>
-
-
-    <!-- PROMOÇÕES -->
-    <section id="promocoes" class="promocoes">
-
-        <h2>🔥 Promoções</h2>
-
-        <div class="produtos">
-
-            <div class="produto">
-                <img src="promocao 1.jpg" alt="Produto em promoção">
-
-                <h3>Calça cargo grafite </h3>
-                <p>R$ 79,90</p>
-
-                <button>Comprar</button>
-            </div>
-
-
-            <div class="produto">
-                <img src="promocao 2.jpg" alt="Produto em promoção">
-
-                <h3>Moletom cinza</h3>
-                <p>R$ 79,90</p>
-
-                <button>Comprar</button>
-            </div>
-
-
-            <div class="produto">
-                <img src="promocao 3.jpg" alt="Produto em promoção">
-
-                <h3>Tenis nike</h3>
-                <p>R$ 149,90</p>
-
-                <button>Comprar</button>
-            </div>
-
+        <div class="slide">
+            <img src="img 2.jpg" alt="Produto em destaque">
         </div>
 
-    </section>
+        <div class="slide">
+            <img src="img 3.jpg" alt="Produto em destaque">
+        </div>
+
+        <div class="slide">
+            <img src="img 4.jpg" alt="Produto em destaque">
+        </div>
+
+        <div class="slide">
+            <img src="img 5.jpg" alt="Produto em destaque">
+        </div>
+
+        <div class="slide">
+            <img src="img 6.jpg" alt="Produto em destaque">
+        </div>
+
+        <div class="slide">
+            <img src="img 7.jpg" alt="Produto em destaque">
+        </div>
+
+    </div>
+
+</section>
+
+<script>
+
+const slides = document.querySelectorAll(".slide");
+
+let posicao = 0;
+
+function atualizarCarrossel() {
+
+    slides.forEach((slide, index) => {
+
+        slide.classList.remove(
+            "esquerda",
+            "meio",
+            "direita",
+            "oculta"
+        );
+
+        if (index === posicao % slides.length) {
+
+            slide.classList.add("esquerda");
+
+        }
+
+        else if (
+            index === (posicao + 1) % slides.length
+        ) {
+
+            slide.classList.add("meio");
+
+        }
+
+        else if (
+            index === (posicao + 2) % slides.length
+        ) {
+
+            slide.classList.add("direita");
+
+        }
+
+        else {
+
+            slide.classList.add("oculta");
+
+        }
+
+    });
+}
+
+
+atualizarCarrossel();
+
+
+setInterval(() => {
+
+    posicao++;
+
+    atualizarCarrossel();
+
+}, 3000);
+
+</script>
 
 
     <!-- PRODUTOS -->
@@ -202,5 +237,4 @@
 </body>
 
 </html>
-
 
